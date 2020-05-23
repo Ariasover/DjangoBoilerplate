@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     
     # Local apps
     'apps.generals',
+    'apps.users',
 ]
 
 MIDDLEWARE = [

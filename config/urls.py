@@ -20,5 +20,6 @@ from apps.generals import views as general_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.generals.urls')),
+    path('users/', include('apps.users.urls')),
     
 ]
