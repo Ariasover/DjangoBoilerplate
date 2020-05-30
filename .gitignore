@@ -1,6 +1,7 @@
 /media
 /requirements/production.txt
 *.pyc
-.vscode/
+/.vscode
 __pycache__/
 *.sqlite3
+/static
