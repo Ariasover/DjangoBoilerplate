@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    Grupo de Usuarios | BIDSS Technology
+    Listado de grupos
 {% endblock title %}
     
 {% block content %}
@@ -19,16 +19,16 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre</th>
-                                        <th><a href="{% url 'crear_grupo' %}" class="btn btn-danger btn-sm">Crear Grupo</a></th>
+                                        <th><a href="{% url 'users:create_group' %}" class="btn btn-danger btn-sm">Crear Grupo</a></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for x in listado_grupos %}
+                                    {% for x in groups_list %}
                                         <tr>
                                             <td>{{forloop.counter}}</td>
                                             <td>{{x.name}}</td>
                                             <td>
-                                                <a href="{% url 'editar_grupo' x.id %}" class="btn btn-secondary btn-xs">Editar</a>
+                                                <a href="{% url 'users:edit_group' x.id %}" class="btn btn-secondary btn-xs">Editar</a>
                                             </td>
                                         </tr>
                                     {% endfor %}

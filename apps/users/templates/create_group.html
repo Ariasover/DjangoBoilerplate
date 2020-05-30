@@ -1,43 +1,50 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %}
-Crear Usuario | Tickets BIDSS Technology
-{% endblock title %}
+Crear Grupo | Tickets BIDSS Technology
+{% endblock title %} 
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/select2/dist/css/select2.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/select2/select2-bootstrap4.css' %}">
     <div class="container-fluid">
+        <!--
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Grupos </h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Listado Grupos</a></li>
+                    <li class="breadcrumb-item active">Nuevo Grupo</li>
+                </ol>
+            </div>
+        </div>
+        -->
+
         <div class="row"> 
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Nuevo Usuario</h4>
+                        <h4 class="card-title">Nuevo Grupo</h4>
                         <h6 class="card-subtitle"></h6>
                         <hr>
                         <form method="POST" accept-charset="utf-8" autocomplete="off" >
                           {% csrf_token %}
                           <div class="row">
-                            {% for field in form %}
-                            <div class="col-md-6">
-                              <div class="form-group g-mb-20">
-                                {{ field.label_tag }}
-                                {{ field }}
-                                {% if field.help_text %}
-                                <p class="textHelp">{{ field.help_text }}</p>
-                                {% endif %}
-                                {% for error in field.errors %}
-                                <p style="color: red">{{ error }}</p>
-                                {% endfor %}
-                                </p>
-                              </div>
-                            </div>
-                            {% endfor %}
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label>Grupos de usuarios</label>
-                                <select name="grupos" id="id_grupos" class="form-control select2" multiple="" style="width:100%;">
-                                    {% for x in grupos %}
-                                      <option value="{{x.id}}">{{x.name}}</option>
+                                <label>Nombre</label>
+                                <input type="text" name="name" id="id_name" class="form-control" maxlength="80" required>
+                              </div>
+                            </div>                            
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label>Permisos</label>
+                                <select name="permissions" id="id_permissions" class="form-control select2" multiple="" size="10" style="width:100%;">
+                                    {% for x in permissions_list %}
+                                      <option value="{{x.id}}">{{x.content_type.app_label}} | {{x.codename}} | {{x.name}}</option>
                                     {% endfor %}
                                 </select>
                               </div>
@@ -60,7 +67,6 @@ Crear Usuario | Tickets BIDSS Technology
   <script>
     $(document).ready(function(){
       $(".select2").select2({});
-      $("input[type=text], input[type=password], input[type=email], input[type=tel]").addClass('form-control');
     });
   </script>
 

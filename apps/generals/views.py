@@ -2,8 +2,12 @@
 
 # Django
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, logout, login as auth_login 
+from django.contrib.auth.decorators import login_required
+
 
 # Local imports
+
 
 def login(request):
 	ctx = {}
@@ -24,8 +28,12 @@ def login(request):
 		}
 	return render(request, 'login.html', ctx)
 
-
+@login_required()
 def index(request):
 	ctx = {
 	}
 	return render(request, 'index.html', ctx)
+
+def logout_user(request):
+	logout(request)
+	return redirect('generals:login')

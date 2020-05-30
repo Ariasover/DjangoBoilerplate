@@ -9,4 +9,5 @@ app_name = 'generals'
 urlpatterns = [
     path('', general_views.login, name='login'),    
     path('index/', general_views.index, name='index'),    
+    path('logout-user/', general_views.logout_user, name='logout_user'),    
 ]

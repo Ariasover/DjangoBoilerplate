@@ -7,19 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" Sistemas de gestion de clientes">
-    <meta name="author" content="Juan Carlos Hernandez Reyes">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon.png' %}">
-    <title>Activación de Cuenta | Tickets BIDSS Technology</title>
+    <title>Activación de cuenta</title>
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- page css -->
     <link href="{% static 'css/pages/login-register-lock.css' %}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/myStyle.css' %}" rel="stylesheet">
-    <link href="{% static 'css/colors/bidssColors.css' %}" id="theme" rel="stylesheet">
     <style>
         .crmTitle {
             font-weight: bold;
@@ -33,7 +28,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Tickets BIDSS</p>
+            <p class="loader__label">Application</p>
         </div>
     </div>
     <section id="wrapper" class="login-register login-sidebar"
@@ -43,8 +38,8 @@
                 <form class="form-horizontal form-material" id="loginform" autocomplete="off" method="POST">
                     {% csrf_token %}
 
-                    <h3 class="text-center crmTitle">Activación Cuenta TICKETS</h3>
-                    {% include 'mensajes.html' %}
+                    <h3 class="text-center crmTitle">Activación Cuenta</h3>
+                    {% include 'messages.html' %}
                     {% for field in form %}
                     <div class="form-group g-mb-20">
                         {{ field.label_tag }}

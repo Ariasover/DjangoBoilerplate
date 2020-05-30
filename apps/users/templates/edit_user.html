@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block title %}
-Editar Usuario | Tickets BIDSS Technology
+Editar Usuario
 {% endblock title %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'plugins/select2/dist/css/select2.min.css' %}">
@@ -29,35 +29,28 @@ Editar Usuario | Tickets BIDSS Technology
                         <hr>
                         <form method="POST" accept-charset="utf-8" autocomplete="off" >
                           {% csrf_token %}
-                          <input type="hidden" name="user_id" value="{{usr.id}}">
+                          <input type="hidden" name="user_id" value="{{user.id}}">
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Nombre</label>
                                 <input type="text" name="first_name" id="id_first_name" class="form-control" 
-                                maxlength="30"  value="{{usr.first_name}}" required>
+                                maxlength="30"  value="{{user.first_name}}" required>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Apellidos</label>
                                 <input type="text" name="last_name" id="id_last_name" class="form-control" 
-                                maxlength="30"  value="{{usr.last_name}}" required >
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label>Correo Electrónico</label>
-                                <input type="email" name="email" id="id_email" class="form-control" 
-                                maxlength="254"  value="{{usr.email}}" required readonly>
+                                maxlength="30"  value="{{user.last_name}}" required >
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label>Estado</label>
                                 <select name="is_active" id="id_is_active" class="form-control" required="" >
-                                  <option value="1" {% if usr.is_active%} selected {% endif %} >Activo</option>
-                                  <option value="0" {% if not usr.is_active %} selected {% endif %} >Inactivo</option>
+                                  <option value="1" {% if user.is_active%} selected {% endif %} >Activo</option>
+                                  <option value="0" {% if not user.is_active %} selected {% endif %} >Inactivo</option>
                                 </select>
                               </div>
                             </div>
@@ -68,7 +61,7 @@ Editar Usuario | Tickets BIDSS Technology
                                 <label>Grupos de usuarios</label>
                                 <select name="grupos" id="id_grupos" class="form-control select2" multiple="" style="width: 100%;">
                                     {% for x in grupos %}
-                                      {% if x in  usr.groups.all %}
+                                      {% if x in  user.groups.all %}
                                         <option value="{{x.id}}" selected>{{x.name}}</option>
                                       {% else %}
                                         <option value="{{x.id}}">{{x.name}}</option>
